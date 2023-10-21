@@ -6,5 +6,5 @@ mp4s = os.listdir('videos/')
 for mp4 in mp4s:
     print('Converting: ' + mp4)
     video = VideoFileClip('videos/'+mp4)
-    video.audio.write_audiofile('audio_mp3/'+mp4[:-1]+'3')
+    video.audio.write_audiofile('audios/'+mp4[:-1]+'3')
 
