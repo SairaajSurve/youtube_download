@@ -1,16 +1,12 @@
-import pytube
+from pytubefix import YouTube
+from pytubefix.cli import on_progress
 
+url = ""
+output_path = ""
 
-link = input('Video Link: ')
-video = pytube.YouTube(link)
+yt = YouTube(url, on_progress_callback=on_progress)
+print(yt.title)
 
-
-cur_dir = 'videos'
-
-print('downloading : {} with url : {}'.format(video.title, video.watch_url))
-video.streams.\
-  filter(type='video', progressive=True, file_extension='mp4').\
-  order_by('resolution').\
-  desc().\
-  first().\
-  download(cur_dir)
+ys = yt.streams.get_audio_only()
+# ys = yt.streams.get_highest_resolution()
+ys.download(output_path=output_path)
